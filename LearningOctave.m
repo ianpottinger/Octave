@@ -5,11 +5,11 @@ dir;
 CurrentDirectory = pwd;
 ls
 
-pi
-infinity = 10^309;
+infinity = 10^309
 disp(infinity)
-zero = 10^-324;
+zero = 10^-324
 disp(zero)
+fprintf('Octave closest to zero is %e and nearet to infinity is %e \n', 10^-323, 10^308)
 
 vect = [9, 8, 7, 6, 5, 4, 3, 2, 1]
 matr = [1, 2, 3, 4;
@@ -26,6 +26,7 @@ subtraction = array .- 2
 
 result = array * matr
 last = result(end, end)
+fprintf('The last element of result is %i \n', last)
 
 dimensions = size(result)
 elements = numel(result)
@@ -37,21 +38,46 @@ tangent = tan(result)
 width = [matr, array']
 height = [array; matr']
 
-control = 2
-number = input('Enter a number: ');
-if (typeinfo(number) == typeinfo(control))
-  disp( ['The number entered is: ', num2str(number), ', which is a number.'] )
-else
-  disp('Invalid number entered')
+control = typeinfo(pi)
+valid = false
+while (valid == false)
+    try
+        number = input('Enter a number: ');
+    catch
+        if (typeinfo(number) == control)
+            disp( ['The number entered is: ', num2str(number), ', which is a number.'] )
+            valid = true
+        else
+            disp('Invalid number entered, Try again much harder.')
+            valid = false
+        end
+    end_try_catch    
 end
 
+switch number
+    case {42}
+        disp('The answer to Life, the Universe and Everything')
+    case {666}
+        disp('The mark of the beast')
+    otherwise
+        disp('Another day, another number')
+end
 
-control = 'string'
+control = typeinfo('string')
 string = input('Enter a string: ', 's');
-if (typeinfo(string) == typeinfo(control))
-  disp( ['The string entered is: ', string, ', which is a string.'] )
+if (typeinfo(string) == control)
+    disp( ['The string entered is: ', string, ', which is a string.'] )
 else
-  disp('Invalid string entered')
+    disp('Invalid string entered')
+end
+
+switch string
+  case {'string'}
+    disp('Almost correct')
+  case {'a string'}
+    disp('Completely correct')
+  otherwise
+    disp('Totally wrong')
 end
 
 proceed = input('Press Enter to continue: ', 's');
