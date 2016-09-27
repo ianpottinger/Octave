@@ -5,6 +5,7 @@ dir;
 CurrentDirectory = pwd;
 ls
 
+fprintf('Octave PI is %20.18f \n', pi)
 infinity = 10^309
 disp(infinity)
 zero = 10^-324
